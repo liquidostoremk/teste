@@ -22,14 +22,17 @@
     <script defer src="script.js"></script>
   </head>
   <body>
+    <!-- Link de salto que permite que leitores de tela e usuários de teclado pulem direto para o conteúdo principal -->
     <a class="skip-to-content" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header" id="topo">
       <div class="container header-wrap">
+        <!-- Clique no logotipo volta ao topo da página -->
         <a href="#topo" class="logo" aria-label="Brisa, página inicial">
           <span class="logo-mark" aria-hidden="true">~</span>
           <span class="logo-text">Brisa</span>
         </a>
+        <!-- Navegação principal com âncoras que fazem scroll suave para as seções -->
         <nav class="nav" aria-label="Navegação principal">
           <ul>
             <li><a href="#colecao">Coleção</a></li>
@@ -38,6 +41,7 @@
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
+        <!-- Botão de destaque que leva o usuário direto para a seção de produtos -->
         <a class="btn btn-primary header-cta" href="#colecao">Comprar</a>
       </div>
     </header>
@@ -49,6 +53,7 @@
             <h1>Moda praia que abraça o verão</h1>
             <p>Conforto, estilo e proteção UV pensados para todos os corpos. Descubra peças atemporais, secagem rápida e tecidos sustentáveis.</p>
             <div class="hero-ctas">
+              <!-- Botões da dobra principal: levam para coleção e para a seção institucional -->
               <a class="btn btn-primary" href="#colecao">Ver coleção</a>
               <a class="btn btn-ghost" href="#sobre">Conheça a marca</a>
             </div>
@@ -123,6 +128,7 @@
           </header>
 
           <div class="products-grid">
+            <!-- Cada card possui um link com data-product-open que abre o modal de detalhes -->
             <article class="card">
               <div class="card-media" role="img" aria-label="Biquíni triângulo azul com recortes geométricos"></div>
               <div class="card-body">
@@ -208,6 +214,7 @@
               <li>Grade inclusiva do PP ao 4G</li>
               <li>Design atemporal que dura mais</li>
             </ul>
+            <!-- Botão secundário que retorna para a seção de coleção -->
             <a class="btn btn-primary" href="#colecao">Explorar peças</a>
           </div>
         </div>
@@ -243,6 +250,7 @@
               <h2 id="news-title">Entre para o Clube da Maré</h2>
               <p>Receba novidades, lançamentos e 10% OFF no primeiro pedido.</p>
             </div>
+            <!-- Formulário de newsletter: script valida o e-mail e dá feedback via .form-msg -->
             <form id="news-form" class="newsletter-form" aria-label="Formulário de inscrição na newsletter" novalidate>
               <label class="sr-only" for="news-email">Seu e-mail</label>
               <input id="news-email" name="email" type="email" inputmode="email" placeholder="seu@email.com" required />
@@ -258,6 +266,7 @@
           <header class="section-header">
             <h2>Perguntas frequentes</h2>
           </header>
+          <!-- Elementos <details> permitem expandir e recolher respostas sem JavaScript -->
           <details>
             <summary>Como funcionam as trocas e devoluções?</summary>
             <p>Você tem 30 dias para trocar sem custo adicional. É só falar com nosso suporte e gerar a etiqueta reversa.</p>
@@ -274,15 +283,18 @@
       </section>
     </main>
 
+    <!-- Estrutura do modal de produto controlado via data-product-* no script -->
     <div class="product-modal" data-product-modal aria-hidden="true">
       <div class="product-modal__overlay" data-product-overlay></div>
       <div class="product-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+        <!-- Botão principal de fechar modal -->
         <button class="product-modal__close" type="button" data-product-close aria-label="Fechar pop-up de produto">
           ×
         </button>
         <div class="product-modal__scroll">
           <div class="product-modal__content">
             <div class="product-modal__media">
+              <!-- Galeria com botões anterior/próximo e indicadores acessíveis -->
               <div class="product-slider" data-product-slider>
                 <div class="product-slider__viewport">
                   <button
@@ -315,7 +327,9 @@
               <p class="product-modal__description" data-product-description></p>
               <ul class="product-modal__features" data-product-features></ul>
               <div class="product-modal__actions">
+                <!-- Botão principal recebe rótulo do produto selecionado -->
                 <button class="btn btn-primary" type="button" data-product-action></button>
+                <!-- Versão mobile do botão de fechar, reaproveita o mesmo seletor data-product-close -->
                 <button
                   class="btn btn-ghost product-modal__close-mobile"
                   type="button"
@@ -334,18 +348,21 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="brand">
+          <!-- Logo no rodapé também rola até o topo -->
           <a href="#topo" class="logo">
             <span class="logo-mark" aria-hidden="true">~</span>
             <span class="logo-text">Brisa</span>
           </a>
           <p>Moda praia feita no Brasil. Ética, leve e para todos.</p>
         </div>
+        <!-- Links rápidos para repetir a navegação principal -->
         <nav class="footer-nav" aria-label="Links">
           <a href="#colecao">Coleção</a>
           <a href="#sobre">Sobre</a>
           <a href="#depoimentos">Depoimentos</a>
           <a href="#contato">Contato</a>
         </nav>
+        <!-- Ícones sociais apenas como exemplos de saída para redes -->
         <div class="social" aria-label="Redes sociais">
           <a href="#" aria-label="Instagram">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor"/><circle cx="12" cy="12" r="4" stroke="currentColor"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg>
@@ -368,6 +385,7 @@
       </div>
     </footer>
 
+    <!-- Botão flutuante que surge após rolagem para voltar ao topo -->
     <a href="#topo" class="to-top" aria-label="Voltar ao topo">↑</a>
   </body>
   </html>
