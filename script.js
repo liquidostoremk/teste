@@ -1,5 +1,6 @@
 // Utilidades simples para UX da landing
 (function () {
+  // Inicializa rolagem suave Lenis se a lib tiver sido carregada; caso contrário usa scroll nativo
   const lenis = window.Lenis
     ? new window.Lenis({
         duration: 1.1,
@@ -9,6 +10,7 @@
     : null;
 
   if (lenis) {
+    // Mantém a animação da Lenis rodando em cada frame
     const raf = (time) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -19,9 +21,10 @@
   const header = document.querySelector('.site-header');
   const toTop = document.querySelector('.to-top');
   const year = document.getElementById('year');
+  // Preenche automaticamente o ano do rodapé
   if (year) year.textContent = new Date().getFullYear();
 
-  // Header sombra e botão voltar ao topo
+  // Aplica sombra ao header e mostra o botão "voltar ao topo" conforme a rolagem
   const onScroll = () => {
     const y = window.scrollY || window.pageYOffset;
     header?.classList.toggle('scrolled', y > 8);
@@ -30,7 +33,7 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Scroll suave para âncoras
+  // Intercepta cliques em links âncora para aplicar scroll suave e atualizar a URL
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -52,6 +55,7 @@
   const email = document.getElementById('news-email');
   const msg = form?.querySelector('.form-msg');
 
+  // Valida o e-mail informado e exibe mensagens de erro/sucesso sem enviar requisição real
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
     const value = (email?.value || '').trim();
@@ -184,6 +188,7 @@
 
   const modal = document.querySelector('[data-product-modal]');
   if (modal) {
+    // Referências aos elementos atualizados dinamicamente
     const titleEl = modal.querySelector('[data-product-title]');
     const metaEl = modal.querySelector('[data-product-meta]');
     const priceEl = modal.querySelector('[data-product-price]');
@@ -207,6 +212,7 @@
     let currentSlug = null;
     let lastTrigger = null;
 
+    // Ajusta o parâmetro ?produto= na URL para manter o modal sincronizado com o histórico
     const setUrlProduct = (slug, { replace = false } = {}) => {
       const url = new URL(window.location.href);
       if (slug) {
@@ -218,11 +224,13 @@
       history[method]({ product: slug }, '', url);
     };
 
+    // Atualiza texto de status acessível com a posição atual do slide
     const announceSlide = () => {
       if (!statusEl || !sliderItems.length) return;
       statusEl.textContent = `Imagem ${currentIndex + 1} de ${sliderItems.length}`;
     };
 
+    // Cria dinamicamente as imagens e indicadores conforme o produto escolhido
     const renderSlides = (product) => {
       trackEl.innerHTML = '';
       dotsEl.innerHTML = '';
@@ -262,6 +270,7 @@
       announceSlide();
     };
 
+    // Move o carrossel para o índice desejado, com loop infinito
     const goToSlide = (index) => {
       if (!sliderItems.length) return;
       const total = sliderItems.length;
@@ -273,6 +282,7 @@
       announceSlide();
     };
 
+    // Preenche o modal com os dados do produto selecionado
     const fillModal = (slug) => {
       const product = productData[slug];
       if (!product) return false;
@@ -299,6 +309,7 @@
       return true;
     };
 
+    // Abre o modal, opcionalmente atualizando histórico e focando no botão de fechar
     const openModal = (slug, { updateHistory = true, replaceHistory = false, focus = true } = {}) => {
       if (!fillModal(slug)) return;
       modal.classList.add('is-open');
@@ -315,6 +326,7 @@
       }
     };
 
+    // Fecha o modal e restaura a URL/ foco se necessário
     const closeModal = ({ updateHistory = true, replaceHistory = false, returnFocus = true } = {}) => {
       if (!modal.classList.contains('is-open')) return;
       modal.classList.remove('is-open');
@@ -332,6 +344,7 @@
       }
     };
 
+    // Controles do carrossel (anterior/próximo e bolinhas)
     prevBtn?.addEventListener('click', () => {
       goToSlide(currentIndex - 1);
     });
@@ -347,6 +360,7 @@
       goToSlide(idx);
     });
 
+    // Botões e overlay fecham o modal preservando foco
     closeButtons.forEach((button) =>
       button.addEventListener('click', () =>
         closeModal({ returnFocus: true, replaceHistory: true })
@@ -356,6 +370,7 @@
       closeModal({ returnFocus: false, replaceHistory: true })
     );
 
+    // Permite fechar com a tecla ESC
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && modal.classList.contains('is-open')) {
         event.preventDefault();
@@ -363,6 +378,7 @@
       }
     });
 
+    // Links "Adicionar" dos cards disparam o modal com os dados do produto correspondente
     const triggers = document.querySelectorAll('[data-product-open]');
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', (event) => {
@@ -374,6 +390,7 @@
       });
     });
 
+    // Garante que abrir o modal atualize/feche com o botão voltar do navegador
     const syncWithUrl = ({ replaceHistory = false, focus = false } = {}) => {
       const slug = new URLSearchParams(window.location.search).get('produto');
       if (slug && productData[slug]) {
@@ -388,11 +405,13 @@
       syncWithUrl({ focus: false });
     });
 
+    // Inicializa o estado do histórico para que popstate funcione mesmo após o primeiro carregamento
     if (history.state === null || typeof history.state !== 'object' || !('product' in history.state)) {
       const current = new URLSearchParams(window.location.search).get('produto');
       history.replaceState({ product: current || null }, '', window.location.href);
     }
 
+    // Se a URL já vier com ?produto= abre automaticamente o modal correspondente
     const initialSlug = new URLSearchParams(window.location.search).get('produto');
     if (initialSlug && productData[initialSlug]) {
       openModal(initialSlug, { updateHistory: false, focus: false, replaceHistory: true });
