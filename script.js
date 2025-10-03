@@ -1,5 +1,21 @@
 // Utilidades simples para UX da landing
 (function () {
+  const lenis = window.Lenis
+    ? new window.Lenis({
+        duration: 1.1,
+        smoothWheel: true,
+        smoothTouch: false,
+      })
+    : null;
+
+  if (lenis) {
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
   const header = document.querySelector('.site-header');
   const toTop = document.querySelector('.to-top');
   const year = document.getElementById('year');
@@ -23,7 +39,11 @@
     const el = document.querySelector(id);
     if (!el) return;
     e.preventDefault();
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (lenis) {
+      lenis.scrollTo(el, { lock: true });
+    } else {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     history.pushState(null, '', id);
   });
 
