@@ -195,7 +195,10 @@
     const prevBtn = modal.querySelector('[data-slider-prev]');
     const nextBtn = modal.querySelector('[data-slider-next]');
     const statusEl = modal.querySelector('[data-slider-status]');
-    const closeBtn = modal.querySelector('[data-product-close]');
+    const closeButtons = Array.from(
+      modal.querySelectorAll('[data-product-close]')
+    );
+    const closeBtn = closeButtons[0] || null;
     const overlay = modal.querySelector('[data-product-overlay]');
 
     let sliderItems = [];
@@ -344,8 +347,10 @@
       goToSlide(idx);
     });
 
-    closeBtn?.addEventListener('click', () =>
-      closeModal({ returnFocus: true, replaceHistory: true })
+    closeButtons.forEach((button) =>
+      button.addEventListener('click', () =>
+        closeModal({ returnFocus: true, replaceHistory: true })
+      )
     );
     overlay?.addEventListener('click', () =>
       closeModal({ returnFocus: false, replaceHistory: true })

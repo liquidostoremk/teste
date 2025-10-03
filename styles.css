@@ -403,6 +403,10 @@ body.modal-open { overflow: hidden; }
   align-content: start;
 }
 
+.product-modal__close-mobile {
+  display: none;
+}
+
 .product-modal__note {
   color: var(--muted);
 }
@@ -438,6 +442,11 @@ body.modal-open { overflow: hidden; }
   .product-modal__close {
     top: calc(0.75rem + env(safe-area-inset-top, 0));
     right: calc(0.75rem + env(safe-area-inset-right, 0));
+  }
+
+  .product-modal__close-mobile {
+    display: inline-flex;
+    width: 100%;
   }
 
   .product-slider__control {
