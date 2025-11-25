@@ -1,0 +1,57 @@
+/* Color tokens extracted for theming */
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --primary: #ef4444;
+  --primary-600: #dc2626;
+  --accent: #f87171;
+  --ring: #fca5a5;
+  --surface: #f8fafc;
+  --surface-2: #fef2f2;
+  --border: #e2e8f0;
+  --shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+
+  --card-gradient-start: #f87171;
+  --card-gradient-end: #ef4444;
+  --card-gradient-alt-start: #111827;
+  --card-gradient-alt-end: #374151;
+  --card-gradient-sunset-start: #fb7185;
+  --card-gradient-sunset-end: #f59e0b;
+  --card-gradient-mint-start: #34d399;
+  --card-gradient-mint-end: #059669;
+  --card-media-highlight: rgba(255, 255, 255, 0.35);
+  --card-media-shadow: rgba(0, 0, 0, 0.06);
+
+  --about-stop-1: #fb7185;
+  --about-stop-2: #ef4444;
+  --about-stop-3: #fca5a5;
+
+  --product-overlay: rgba(15, 23, 42, 0.55);
+  --product-shadow-strong: 0 25px 45px rgba(15, 23, 42, 0.2);
+  --product-close-border: color-mix(in oklab, var(--border) 70%, transparent);
+  --product-close-bg: rgba(255, 255, 255, 0.75);
+  --product-close-bg-hover: rgba(255, 255, 255, 0.95);
+
+  --slider-control-bg: rgba(15, 23, 42, 0.78);
+  --slider-control-bg-hover: rgba(15, 23, 42, 0.92);
+
+  --on-primary: #fff;
+  --on-contrast: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --text: #e5e7eb;
+    --muted: #cbd5e1;
+    --primary: #f87171;
+    --primary-600: #ef4444;
+    --accent: #fb7185;
+    --ring: #b91c1c;
+    --surface: #0f172a;
+    --surface-2: #3a0b0b;
+    --border: #1f2937;
+    --shadow: 0 10px 30px rgba(248, 113, 113, 0.15);
+  }
+}
