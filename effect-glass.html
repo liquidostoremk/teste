@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dynamic glass / blur theming</title>
+    <style>
+      body {
+        font-family: system-ui, Arial;
+        margin: 0;
+        height: 100vh;
+        background-image: linear-gradient(135deg, #0ea5a9, #7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .card {
+        width: min(740px, 90%);
+        padding: 28px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px) saturate(120%);
+        color: #fff;
+        box-shadow: 0 12px 40px rgba(2, 6, 23, 0.25);
+      }
+      .toggle {
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Glass / Backdrop blur</h1>
+      <p>Este card usa <code>backdrop-filter</code>. Em navegadores que não suportam, o fundo fica semi-transparente.</p>
+      <div class="toggle">
+        <label><input type="checkbox" id="dark" /> Modo escuro (simulado)</label>
+      </div>
+    </div>
+
+    <script>
+      // feature detect
+      if (!CSS.supports("backdrop-filter", "blur(4px)")) {
+        document.querySelector(".card").style.background = "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03))";
+      }
+    </script>
+  </body>
+</html>

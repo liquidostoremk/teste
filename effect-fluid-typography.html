@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fluid typography & Container Queries</title>
+    <style>
+      :root {
+        --max: 900px;
+      }
+      body {
+        font-family: system-ui, Arial;
+        margin: 0;
+        padding: 40px;
+        background: #fff;
+        color: #0b1220;
+      }
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: clamp(28px, 4vw, 48px);
+        margin: 0 0 12px;
+      }
+      p {
+        font-size: clamp(16px, 2.2vw, 20px);
+        color: #334155;
+      }
+      .card {
+        container-type: inline-size;
+        padding: 18px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #fff, #f8fafc);
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.04);
+        margin-top: 18px;
+      }
+      @container (min-width:420px) {
+        .card {
+          display: flex;
+          gap: 18px;
+          align-items: center;
+        }
+        .card img {
+          width: 160px;
+          height: 100px;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Fluid typography</h1>
+      <p>Texto que escala com a viewport usando <code>clamp()</code>. O cartão abaixo usa container queries para alterar layout quando o container for largo.</p>
+
+      <div class="card">
+        <div>
+          <h3 style="margin: 0">Título do cartão</h3>
+          <p style="margin: 6px 0 0">Este layout muda quando o card tem espaço suficiente (container query).</p>
+        </div>
+        <img src="https://picsum.photos/seed/ft/400/300" alt="placeholder" />
+      </div>
+    </div>
+  </body>
+</html>
