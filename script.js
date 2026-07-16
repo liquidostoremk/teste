@@ -91,14 +91,13 @@
       .from('[data-animate="hero-copy"] p', { y: 24, autoAlpha: 0, duration: 0.7 }, '-=0.45')
       .from('.hero-ctas .btn', { y: 20, autoAlpha: 0, stagger: 0.12, duration: 0.55 }, '-=0.35')
       .from('.hero-badges li', { y: 16, autoAlpha: 0, stagger: 0.08, duration: 0.45 }, '-=0.25')
-      .from('[data-animate="hero-art"]', { scale: 0.92, rotate: -4, autoAlpha: 0, duration: 0.95 }, '-=0.75');
 
     gsap.to('.hero-orb--one', { y: 36, x: -24, repeat: -1, yoyo: true, duration: 5.5, ease: 'sine.inOut' });
     gsap.to('.hero-orb--two', { y: -28, x: 18, repeat: -1, yoyo: true, duration: 4.8, ease: 'sine.inOut' });
 
     if (window.ScrollTrigger) {
       gsap.utils.toArray('[data-animate="section"]').forEach((section) => {
-        gsap.from(section.querySelectorAll('.section-header, .feature, .card, .about-media, .about-copy, .quote, .newsletter-card, details'), {
+        gsap.from(section.querySelectorAll('.section-header, .feature, .card, .about-media, .about-copy, .quote, .newsletter-card, details, .lookbook-copy, .lookbook-steps article, .impact-grid article'), {
           scrollTrigger: { trigger: section, start: 'top 78%' },
           y: 34,
           autoAlpha: 0,
@@ -221,6 +220,58 @@
         },
       ],
       cta: 'Quero na mala',
+    },
+    'camisa-resort-solar': {
+      name: 'Camisa Resort Solar',
+      meta: 'Linho misto • Areia',
+      price: 'R$ 189',
+      description: 'Camisa oversized com toque fresco, botões naturais e caimento resort para usar aberta, fechada ou como sobreposição pós-praia.',
+      features: ['Linho misto respirável com algodão certificado', 'Punho dobrável e bolso frontal funcional', 'Veste do PP ao 4G com caimento relaxado'],
+      images: [
+        { src: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=80', alt: 'Camisa resort clara em produção de verão' },
+        { src: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80', alt: 'Detalhe de look resort claro em cabideiro' },
+        { src: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=900&q=80', alt: 'Tecido claro de camisa resort com textura natural' },
+      ],
+      cta: 'Adicionar ao look',
+    },
+    'chapeu-aurora': {
+      name: 'Chapéu Aurora',
+      meta: 'Palha natural • Aba ampla',
+      price: 'R$ 119',
+      description: 'Chapéu leve de aba ampla para sombra generosa e acabamento artesanal que combina com todos os tons da coleção.',
+      features: ['Aba estruturada com proteção extra para rosto e colo', 'Faixa interna ajustável e confortável', 'Produção artesanal em pequenos lotes'],
+      images: [
+        { src: 'https://images.unsplash.com/photo-1506629905607-d9d297d0f5f5?auto=format&fit=crop&w=900&q=80', alt: 'Chapéu de palha em cena de praia' },
+        { src: 'https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?auto=format&fit=crop&w=900&q=80', alt: 'Acessórios de verão sobre superfície clara' },
+        { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80', alt: 'Chapéu em paisagem de praia ensolarada' },
+      ],
+      cta: 'Quero sombra',
+    },
+    'bolsa-mare-alta': {
+      name: 'Bolsa Maré Alta',
+      meta: 'Fibra reciclada • Impermeável',
+      price: 'R$ 149',
+      description: 'Bolsa espaçosa para toalha, protetor, livro e garrafa. O interior impermeável protege o que precisa chegar seco.',
+      features: ['Forro impermeável fácil de limpar', 'Alças macias para ombro e mão', 'Bolso interno com zíper para itens pequenos'],
+      images: [
+        { src: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80', alt: 'Bolsa de praia próxima ao mar' },
+        { src: 'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=900&q=80', alt: 'Bolsa e acessórios de viagem em ambiente claro' },
+        { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80', alt: 'Bolsa de fibra em cenário natural' },
+      ],
+      cta: 'Levar na viagem',
+    },
+    'canga-por-do-sol': {
+      name: 'Canga Pôr do Sol',
+      meta: 'Estampa exclusiva • Toque macio',
+      price: 'R$ 99',
+      description: 'Canga multifuncional: vira toalha leve, pareô, lenço ou cenário para fotos com estampa inspirada no céu do fim de tarde.',
+      features: ['Viscose leve com secagem rápida', 'Estampa autoral em pigmentos de baixo impacto', 'Tamanho amplo para usar de várias formas'],
+      images: [
+        { src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80', alt: 'Canga colorida em cenário ensolarado' },
+        { src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80', alt: 'Canga na areia diante do mar azul' },
+        { src: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80', alt: 'Canga dobrada com acessórios de praia' },
+      ],
+      cta: 'Adicionar cor',
     },
   };
 
