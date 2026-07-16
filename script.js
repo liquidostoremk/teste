@@ -74,6 +74,44 @@
     form.reset();
   });
 
+
+
+  // Animações GSAP: entrada cinematográfica do hero e revelação suave das seções.
+  const initGsapAnimations = () => {
+    if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const { gsap } = window;
+    if (window.ScrollTrigger) {
+      gsap.registerPlugin(window.ScrollTrigger);
+    }
+
+    gsap.timeline({ defaults: { ease: 'power3.out' } })
+      .from('[data-animate="hero-copy"] .eyebrow', { y: 18, autoAlpha: 0, duration: 0.65 })
+      .from('[data-animate="hero-copy"] h1', { y: 34, autoAlpha: 0, duration: 0.9 }, '-=0.35')
+      .from('[data-animate="hero-copy"] p', { y: 24, autoAlpha: 0, duration: 0.7 }, '-=0.45')
+      .from('.hero-ctas .btn', { y: 20, autoAlpha: 0, stagger: 0.12, duration: 0.55 }, '-=0.35')
+      .from('.hero-badges li', { y: 16, autoAlpha: 0, stagger: 0.08, duration: 0.45 }, '-=0.25')
+      .from('[data-animate="hero-art"]', { scale: 0.92, rotate: -4, autoAlpha: 0, duration: 0.95 }, '-=0.75');
+
+    gsap.to('.hero-orb--one', { y: 36, x: -24, repeat: -1, yoyo: true, duration: 5.5, ease: 'sine.inOut' });
+    gsap.to('.hero-orb--two', { y: -28, x: 18, repeat: -1, yoyo: true, duration: 4.8, ease: 'sine.inOut' });
+
+    if (window.ScrollTrigger) {
+      gsap.utils.toArray('[data-animate="section"]').forEach((section) => {
+        gsap.from(section.querySelectorAll('.section-header, .feature, .card, .about-media, .about-copy, .quote, .newsletter-card, details'), {
+          scrollTrigger: { trigger: section, start: 'top 78%' },
+          y: 34,
+          autoAlpha: 0,
+          duration: 0.72,
+          stagger: 0.09,
+          ease: 'power2.out',
+        });
+      });
+    }
+  };
+
+  window.addEventListener('load', initGsapAnimations, { once: true });
+
   // Popup de produtos com galeria
   const productData = {
     'biquini-triangulo-brisa': {
