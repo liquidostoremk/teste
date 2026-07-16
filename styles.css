@@ -433,3 +433,105 @@ body.modal-open { overflow: hidden; }
 .testimonials .section-header,
 .faq .section-header { margin-bottom: 1.4rem; }
 
+
+/* ========== Tailwind-powered modern refresh ========== */
+:root {
+  --bg: #06111f;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --primary: #14b8a6;
+  --primary-600: #0f766e;
+  --accent: #fbbf24;
+  --ring: #67e8f9;
+  --surface: rgba(15, 23, 42, 0.72);
+  --surface-2: rgba(8, 145, 178, 0.22);
+  --border: rgba(255, 255, 255, 0.14);
+  --shadow: 0 24px 80px rgba(8, 145, 178, 0.22);
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(251, 191, 36, 0.22), transparent 30rem),
+    radial-gradient(circle at 92% 8%, rgba(20, 184, 166, 0.24), transparent 34rem),
+    linear-gradient(135deg, #06111f 0%, #082f49 45%, #111827 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.site-header {
+  background: rgba(6, 17, 31, 0.62);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+}
+
+.site-header.scrolled { background: rgba(6, 17, 31, 0.86); border-color: rgba(255,255,255,.16); }
+.logo { align-items: center; gap: .55rem; color: #fff; }
+.logo-mark { display: grid; place-items: center; width: 2.35rem; height: 2.35rem; margin: 0; border-radius: 999px; background: linear-gradient(135deg, #22d3ee, #14b8a6, #fbbf24); color: #06111f; box-shadow: 0 12px 30px rgba(20,184,166,.35); }
+.nav a { color: rgba(255,255,255,.78); font-weight: 700; }
+.nav a:hover { color: #fff; }
+
+.btn { border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+.btn-primary { border: 0; background: linear-gradient(135deg, #22d3ee, #14b8a6 52%, #fbbf24); color: #06111f; box-shadow: 0 18px 45px rgba(20,184,166,.32); }
+.btn-primary:hover { background: linear-gradient(135deg, #67e8f9, #2dd4bf 52%, #fde68a); }
+.btn-ghost { background: rgba(255,255,255,.10); backdrop-filter: blur(16px); }
+
+.hero {
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 0;
+  background:
+    linear-gradient(90deg, rgba(6,17,31,.92) 0%, rgba(6,17,31,.58) 46%, rgba(6,17,31,.12) 100%),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=86") center/cover no-repeat;
+}
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 70% 40%, rgba(251,191,36,.28), transparent 22rem); }
+.hero-grid { position: relative; z-index: 1; padding-block: 5rem 3rem; }
+.hero-copy { max-width: 720px; }
+.hero-copy h1 { margin-top: 1rem; font-size: clamp(3rem, 8vw, 7.5rem); line-height: .9; letter-spacing: -.07em; color: #fff; text-wrap: balance; }
+.hero-copy p { max-width: 58ch; margin-top: 1.25rem; color: rgba(255,255,255,.82); font-size: clamp(1.05rem, 1vw + .85rem, 1.35rem); }
+.hero-badges li { border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.10); color: #fff; backdrop-filter: blur(12px); }
+.hero-art { border: 1px solid rgba(255,255,255,.2); border-radius: 2rem; transform: rotate(2deg); box-shadow: 0 35px 90px rgba(0,0,0,.38); }
+.hero-art::before { content: "Frete grátis acima de R$299"; position: absolute; z-index: 2; left: 1rem; top: 1rem; border-radius: 999px; background: rgba(255,255,255,.88); color: #0f172a; padding: .55rem .85rem; font-weight: 900; }
+.hero-orb { position: absolute; z-index: 0; border-radius: 999px; filter: blur(4px); opacity: .8; }
+.hero-orb--one { width: 13rem; height: 13rem; right: 8%; top: 16%; background: rgba(34,211,238,.2); }
+.hero-orb--two { width: 9rem; height: 9rem; left: 48%; bottom: 12%; background: rgba(251,191,36,.22); }
+.wave path { fill: #06111f; }
+
+.features, .products, .about, .testimonials, .newsletter, .faq { padding: 5rem 0; }
+.section-header h2 { color: #fff; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.045em; }
+.section-header p { color: rgba(226,232,240,.78); }
+.feature, .card, .quote, .newsletter-card, .faq details, .product-modal__dialog { background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)); border-color: rgba(255,255,255,.14); box-shadow: 0 18px 55px rgba(0,0,0,.18); backdrop-filter: blur(18px); }
+.feature { border-radius: 1.5rem; transition: transform .25s ease, border-color .25s ease; }
+.feature:hover, .card:hover { transform: translateY(-8px); border-color: rgba(45,212,191,.45); }
+.feature .icon { width: 3.25rem; height: 3.25rem; background: linear-gradient(135deg, rgba(34,211,238,.22), rgba(251,191,36,.22)); color: #fff; border: 1px solid rgba(255,255,255,.14); }
+.feature .icon svg:not([hidden]) { display: none; }
+.modern-icon { font-size: 1.55rem; line-height: 1; }
+.card { border-radius: 1.65rem; overflow: hidden; transition: transform .25s ease, border-color .25s ease; }
+.card-media { height: 230px; background: rgba(255,255,255,.08); }
+.card-body, .quote p, .product-modal__info { color: #fff; }
+.card-meta, .quote cite, .product-modal__meta, .product-modal__description, .product-modal__note { color: rgba(226,232,240,.76); }
+.price, .product-modal__price { color: #67e8f9; }
+.about-media { border: 1px solid rgba(255,255,255,.14); border-radius: 2rem; transform: rotate(-1.5deg); }
+.checklist li { color: rgba(255,255,255,.86); }
+.testimonials { background: rgba(255,255,255,.04); }
+.newsletter-card { border-radius: 2rem; padding: clamp(1.4rem, 4vw, 2.5rem); }
+.newsletter-form input { background: rgba(255,255,255,.92); color: #0f172a; }
+.site-footer { background: rgba(6, 17, 31, 0.9); color: rgba(255,255,255,.82); }
+.to-top { background: linear-gradient(135deg, #22d3ee, #14b8a6); color: #06111f; }
+
+@media (min-width: 880px) {
+  .hero-grid { grid-template-columns: 1.05fr .95fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
